@@ -1,6 +1,7 @@
 package pl.com.warmishrock.warmi.arduinoapp;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,22 +13,29 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.bluetooth.BluetoothGatt;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Components
+    Toolbar toolbar;
+    TextView textView2;
+    TextView textView1;
+    FloatingActionButton fab;
     private static final byte REQUEST_ENABLE_BT = 1;
 
     BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        addComponents();
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +54,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    public void addComponents(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        textView2 = (TextView) findViewById(R.id.txt2);
+        textView1 = (TextView) findViewById(R.id.txt1);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
     }
 
     @Override
@@ -65,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            if (pairedDevices.size() > 0) {
+                // There are paired devices. Get the name and address of each paired device.
+                for (BluetoothDevice device : pairedDevices) {
+                    String deviceName = device.getName();
+                    String deviceHardwareAddress = device.getAddress(); // MAC address
+
+                    textView1.setText(deviceName);
+                    textView2.setText(deviceHardwareAddress);
+
+                }
+            }
             return true;
         }
 
