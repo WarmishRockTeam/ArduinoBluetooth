@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.bluetooth.BluetoothGatt;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     TextView textView2;
     TextView textView1;
     FloatingActionButton fab;
+    Button button;
+    ArrayList<String> nazwa;
+    ArrayList<String> macaddress;
     private static final byte REQUEST_ENABLE_BT = 1;
 
     BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -54,6 +60,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    if (pairedDevices.size() > 0) {
+                        // There are paired devices. Get the name and address of each paired device.
+                        for (BluetoothDevice device : pairedDevices) {
+                            nazwa.add(device.getName());
+                            macaddress.add(device.getAddress()); // MAC address
+
+
+                        }
+                    }
+
+                Intent intent = new Intent(MainActivity.this, BtDevicesActivity.class);
+                intent.putExtra("nazwa", nazwa);
+
+                intent.putExtra("macaddress", macaddress);
+                startActivityForResult(intent, 1);
+            }
+        });
+
     }
 
     public void addComponents(){
@@ -61,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         textView2 = (TextView) findViewById(R.id.txt2);
         textView1 = (TextView) findViewById(R.id.txt1);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        button = (Button) findViewById(R.id.button);
+        nazwa = new ArrayList<String>();
+        macaddress = new ArrayList<String>();
     }
 
     @Override
