@@ -14,26 +14,37 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not an hello world"
-        android:id="@+id/txt1" />
-
-    <TextView
-        android:text="TextView"
+        android:text="Serial Input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txt2"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:text="Button"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/sInputEditText"
         android:layout_below="@+id/txt2"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp"
-        android:id="@+id/button" />
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Some predefined commands"
+        android:id="@+id/txt1"
+        android:layout_below="@+id/sInputEditText"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Get Temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/button"
+        android:layout_below="@+id/txt1"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
