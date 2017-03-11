@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
     TextView textView1;
     FloatingActionButton fab;
     Button button;
+    TextView deviceStatus;
+    TextView deviceName;
+    TextView deviceAddress;
+    int choosedDevice;
+    String choosedDeviceName;
+    String choosedDeviceMac;
+
     private static final byte REQUEST_ENABLE_BT = 1;
 
     public BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -41,6 +48,20 @@ public class MainActivity extends AppCompatActivity {
         addComponents();
         setSupportActionBar(toolbar);
         setButtonsListener();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Bundle dane = data.getExtras();
+            choosedDevice = dane.getInt("device");
+            choosedDeviceName = dane.getString("name");
+            choosedDeviceMac = dane.getString("mac");
+            deviceName.setText(choosedDeviceName);
+            deviceAddress.setText(choosedDeviceMac);
+        }
+
     }
 
     public void setButtonsListener() {
@@ -70,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
         textView1 = (TextView) findViewById(R.id.txt1);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         button = (Button) findViewById(R.id.button);
+        deviceStatus = (TextView) findViewById(R.id.deviceStatus);
+        deviceName = (TextView) findViewById(R.id.cDeviceName);
+        deviceAddress = (TextView) findViewById(R.id.cDeviceMac);
     }
 
     @Override

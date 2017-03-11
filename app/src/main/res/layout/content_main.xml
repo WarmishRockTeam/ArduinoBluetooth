@@ -14,22 +14,112 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:text="Serial Input"
+        android:text="Connection status: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txt2"
+        android:id="@+id/textView3"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="not connected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView3"
+        android:id="@+id/deviceStatus" />
+
+    <TextView
+        android:text="Device name: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView5" />
+
+    <TextView
+        android:text="null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/txt1"
+        android:id="@+id/cDeviceName" />
+
+    <TextView
+        android:text="Device address: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView7" />
+
+    <TextView
+        android:text="null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cDeviceName"
+        android:layout_toEndOf="@+id/textView7"
+        android:id="@+id/cDeviceMac" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
         android:id="@+id/sInputEditText"
         android:layout_below="@+id/txt2"
+        android:layout_centerHorizontal="true"
+        android:hint="type some command" />
+
+    <TextView
+        android:text="null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/serialOutput"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Get Temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_below="@+id/txt1"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toStartOf="@+id/serialOutput" />
+
+    <Button
+        android:text="Get "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_below="@+id/txt1"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/serialOutput" />
+
+    <TextView
+        android:text="Serial Input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt2"
+        android:layout_below="@+id/cDeviceMac"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_alignParentStart="true"
+        android:id="@+id/serialOutputLarge"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/serialOutput"
+        android:singleLine="true"
+        android:clickable="false"
+        android:contextClickable="false"
+        android:editable="false"
+        android:enabled="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,14 +127,13 @@
         android:text="Some predefined commands"
         android:id="@+id/txt1"
         android:layout_below="@+id/sInputEditText"
-        android:layout_centerHorizontal="true" />
+        android:layout_toEndOf="@+id/textView5" />
 
-    <Button
-        android:text="Get Temperature"
+    <TextView
+        android:text="Serial Output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:id="@+id/button"
-        android:layout_below="@+id/txt1"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/textView9"
+        android:layout_below="@+id/button"
+        android:layout_alignStart="@+id/txt2" />
 </RelativeLayout>
