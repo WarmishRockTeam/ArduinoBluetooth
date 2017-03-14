@@ -34,183 +34,92 @@ import static pl.com.warmishrock.warmi.arduinoapp.MainActivity.*;
 
 public class BtDevicesActivity extends AppCompatActivity
 {
-    public static int howManyPairedDevices;
-    private ArrayAdapter<String> mBTArrayAdapter;
-    private ListView list ;
+    //public static int howManyPairedDevices;
+//
+//    private ListView list;
+//    private ListView list2;
+//    //List<String> deviceName = new ArrayList<String>();
+//    //List<String> deviceMac = new ArrayList<String>();
+//
+//    private Button buttonSearch;
+//    private Button buttonPaired;
+//
+//    //Devices devices[];
+//    //DeviceAdapter adapter;
+//
+//    //public BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//    //public Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+//
+//
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.select_bluetooth_device);
+//        mBTArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+//
+//        list = (ListView)findViewById(R.id.deviceLV);
+//        list.setAdapter(mBTArrayAdapter); // assign model to view
+//        //list.setOnItemClickListener(mDeviceClickListener);
+//
+//        list2 = (ListView)findViewById(R.id.sDeviceLV);
+//        list2.setAdapter(mBTArrayAdapter); // assign model to view
+//        //list2.setOnItemClickListener(mDeviceClickListener);
+//
+//        buttonSearch = (Button) findViewById(R.id.button2);
+//        //buttonSearch.setOnClickListener(mButtonSearchListener);
+//
+//        buttonPaired = (Button) findViewById(R.id.btPaired);
+//        buttonPaired.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //listPairedDevices(v);
+//            }
+//        });
+//    }
 
-    List<String> deviceName = new ArrayList<String>();
-    List<String> deviceMac = new ArrayList<String>();
+//    private void listPairedDevicesOld(){
+//        if (mPairedDevices.size() > 0) {
+//            for (BluetoothDevice device : mPairedDevices) {
+//                deviceName.add(device.getName());
+//                deviceMac.add(device.getAddress());
+//            }
+//        }
+//
+//        devices = new Devices[]{
+//                new Devices(deviceName.get(0), deviceMac.get(0)),
+//                new Devices(deviceName.get(1), deviceMac.get(1)),
+//                new Devices(deviceName.get(2), deviceMac.get(2)),
+//                new Devices(deviceName.get(3), deviceMac.get(3)),
+//                new Devices(deviceName.get(4), deviceMac.get(4)),
+//                new Devices(deviceName.get(5), deviceMac.get(5)),
+//                new Devices(deviceName.get(6), deviceMac.get(6))
+//        };
+//
+//        list = (ListView) findViewById(R.id.deviceLV);
+//
+//        adapter = new DeviceAdapter(this, R.layout.bluetooth_devices, devices);
+//        list.setAdapter(adapter);
+//
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent zamiar = new Intent();
+//                Bundle choosedDevice = new Bundle();
+//                Bundle deviceNameBu = new Bundle();
+//                Bundle deviceMacBu = new Bundle();
+//                choosedDevice.putInt("device", position);
+//                deviceNameBu.putString("name", deviceName.get(position));
+//                deviceMacBu.putString("mac", deviceMac.get(position));
+//                zamiar.putExtras(choosedDevice);
+//                zamiar.putExtras(deviceNameBu);
+//                zamiar.putExtras(deviceMacBu);
+//                setResult(RESULT_OK, zamiar);
+//                finish();
+//                Toast.makeText(getApplicationContext(), "Wybrano Urzadzenie!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
-    private Button buttonSearch;
-
-    Devices devices[];
-    DeviceAdapter adapter;
-
-    //public BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    //public Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_bluetooth_device);
-        mBTArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-
-        list = (ListView)findViewById(R.id.deviceLV);
-        list.setAdapter(mBTArrayAdapter); // assign model to view
-        list.setOnItemClickListener(mDeviceClickListener);
-
-        buttonSearch = (Button) findViewById(R.id.button2);
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                listPairedDevices(v);
-            }
-        });
-    }
-
-    private void listPairedDevicesOld(){
-        if (mPairedDevices.size() > 0) {
-            for (BluetoothDevice device : mPairedDevices) {
-                deviceName.add(device.getName());
-                deviceMac.add(device.getAddress());
-            }
-        }
-
-        devices = new Devices[]{
-                new Devices(deviceName.get(0), deviceMac.get(0)),
-                new Devices(deviceName.get(1), deviceMac.get(1)),
-                new Devices(deviceName.get(2), deviceMac.get(2)),
-                new Devices(deviceName.get(3), deviceMac.get(3)),
-                new Devices(deviceName.get(4), deviceMac.get(4)),
-                new Devices(deviceName.get(5), deviceMac.get(5)),
-                new Devices(deviceName.get(6), deviceMac.get(6))
-        };
-
-        list = (ListView) findViewById(R.id.deviceLV);
-
-        adapter = new DeviceAdapter(this, R.layout.bluetooth_devices, devices);
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent zamiar = new Intent();
-                Bundle choosedDevice = new Bundle();
-                Bundle deviceNameBu = new Bundle();
-                Bundle deviceMacBu = new Bundle();
-                choosedDevice.putInt("device", position);
-                deviceNameBu.putString("name", deviceName.get(position));
-                deviceMacBu.putString("mac", deviceMac.get(position));
-                zamiar.putExtras(choosedDevice);
-                zamiar.putExtras(deviceNameBu);
-                zamiar.putExtras(deviceMacBu);
-                setResult(RESULT_OK, zamiar);
-                finish();
-                Toast.makeText(getApplicationContext(), "Wybrano Urzadzenie!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    final BroadcastReceiver blReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if(BluetoothDevice.ACTION_FOUND.equals(action)){
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                // add the name to the list
-                mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-                mBTArrayAdapter.notifyDataSetChanged();
-            }
-        }
-    };
-
-    private void discover(View view){
-        // Check if the device is already discovering
-        if(mBluetoothAdapter.isDiscovering()){
-            mBluetoothAdapter.cancelDiscovery();
-            Toast.makeText(getApplicationContext(),"Discovery stopped",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            if(mBluetoothAdapter.isEnabled()) {
-                mBTArrayAdapter.clear(); // clear items
-                mBluetoothAdapter.startDiscovery();
-                Toast.makeText(getApplicationContext(), "Discovery started", Toast.LENGTH_SHORT).show();
-                registerReceiver(blReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-            }
-            else{
-                Toast.makeText(getApplicationContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void listPairedDevices(View view){
-        mPairedDevices = mBluetoothAdapter.getBondedDevices();
-        if(mBluetoothAdapter.isEnabled()) {
-            // put it's one to the adapter
-            for (BluetoothDevice device : mPairedDevices)
-                mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-
-            Toast.makeText(getApplicationContext(), "Show Paired Devices", Toast.LENGTH_SHORT).show();
-        }
-        else
-            Toast.makeText(getApplicationContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
-    }
-
-    private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-
-            if(!mBluetoothAdapter.isEnabled()) {
-                Toast.makeText(getBaseContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            //mBluetoothStatus.setText("Connecting...");
-            // Get the device MAC address, which is the last 17 chars in the View
-            String info = ((TextView) v).getText().toString();
-            final String address = info.substring(info.length() - 17);
-            final String name = info.substring(0,info.length() - 17);
-
-            // Spawn a new thread to avoid blocking the GUI one
-            new Thread()
-            {
-                public void run() {
-                    boolean fail = false;
-
-                    BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
-
-                    try {
-                        mBTSocket = createBluetoothSocket(device);
-                    } catch (IOException e) {
-                        fail = true;
-                        Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
-                    }
-                    // Establish the Bluetooth socket connection.
-                    try {
-                        mBTSocket.connect();
-                    } catch (IOException e) {
-                        try {
-                            fail = true;
-                            mBTSocket.close();
-                            mHandler.obtainMessage(CONNECTING_STATUS, -1, -1)
-                                    .sendToTarget();
-                        } catch (IOException e2) {
-                            //insert code to deal with this
-                            Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    if(fail == false) {
-                        mConnectedThread = new ConnectedThread(mBTSocket);
-                        mConnectedThread.start();
-
-                        mHandler.obtainMessage(CONNECTING_STATUS, 1, -1, name)
-                                .sendToTarget();
-                    }
-                }
-            }.start();
-        }
-    };
 }
 
 

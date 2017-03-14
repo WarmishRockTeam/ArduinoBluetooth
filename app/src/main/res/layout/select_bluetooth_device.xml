@@ -10,9 +10,9 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Search Devices" />
+        android:text="Search Devices"
+        android:layout_toStartOf="@+id/btPaired" />
 
     <ListView
 
@@ -29,4 +29,12 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/deviceLV" />
+
+    <Button
+        android:id="@+id/btPaired"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/button2"
+        android:text="Paired Devices" />
 </RelativeLayout>

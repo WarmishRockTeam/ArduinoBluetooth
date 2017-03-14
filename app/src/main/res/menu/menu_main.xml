@@ -3,14 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pl.com.warmishrock.warmi.arduinoapp.MainActivity">
     <item
-        android:id="@+id/action_bluetooth"
-        android:title="action_bluetooth"
-        app:showAsAction="ifRoom"
-        android:icon="@android:drawable/stat_sys_data_bluetooth" />
+        android:id="@+id/action_paired"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="Show Paired"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_settings"
+        android:icon="@android:drawable/stat_sys_warning"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="ifRoom"
-        android:icon="@android:drawable/stat_sys_warning" />
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="action_search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_bluetooth"
+        android:icon="@android:drawable/stat_sys_data_bluetooth"
+        android:title="action_bluetooth"
+        app:showAsAction="always" />
 </menu>

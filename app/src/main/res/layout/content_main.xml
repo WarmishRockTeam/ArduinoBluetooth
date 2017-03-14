@@ -62,14 +62,15 @@
         android:id="@+id/cDeviceMac" />
 
     <EditText
+        android:id="@+id/sInputEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10"
-        android:id="@+id/sInputEditText"
         android:layout_below="@+id/txt2"
         android:layout_centerHorizontal="true"
-        android:hint="type some command" />
+        android:ems="10"
+        android:hint="type some command"
+        android:inputType="text"
+        tools:focusable="false" />
 
     <TextView
         android:text="null"
@@ -77,25 +78,26 @@
         android:layout_height="wrap_content"
         android:id="@+id/serialOutput"
         android:layout_below="@+id/textView9"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Get Temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:layout_below="@+id/txt1"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/serialOutput" />
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:text="Get Humidity"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/txt1"
-        android:layout_toEndOf="@+id/serialOutput"
-        android:text="Get Humidity" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Serial Input"
@@ -105,28 +107,12 @@
         android:layout_below="@+id/cDeviceMac"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:layout_alignParentStart="true"
-        android:id="@+id/serialOutputLarge"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/serialOutput"
-        android:singleLine="true"
-        android:clickable="false"
-        android:contextClickable="false"
-        android:editable="false"
-        android:enabled="false" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Some predefined commands"
         android:id="@+id/txt1"
-        android:layout_below="@+id/sInputEditText"
+        android:layout_below="@+id/serialOutput"
         android:layout_toEndOf="@+id/textView5" />
 
     <TextView
@@ -134,6 +120,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView9"
-        android:layout_below="@+id/button"
-        android:layout_alignStart="@+id/txt2" />
+        android:layout_below="@+id/sInputEditText"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:id="@+id/listBox1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button" />
 </RelativeLayout>
