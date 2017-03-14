@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deviceListRL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pl.com.warmishrock.warmi.arduinoapp.BtDevicesActivity">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Search Devices"
+        android:layout_toStartOf="@+id/btPaired" />
+
+    <ListView
+
+        android:id="@+id/deviceLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="48dp" />
+
+    <ListView
+        android:id="@+id/sDeviceLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/deviceLV" />
+
+    <Button
+        android:id="@+id/btPaired"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/button2"
+        android:text="Paired Devices" />
+</RelativeLayout>
